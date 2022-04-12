@@ -1,42 +1,48 @@
 
 # Rapport
 
-**Skriv din rapport här!**
+Det som jag har gjort i denna uppgift är 3 widgets som kommer up på home screen och tänkte gå igenom dom 1 och 1
 
-_Du kan ta bort all text som finns sedan tidigare_.
-
-## Följande grundsyn gäller dugga-svar:
-
-- Ett kortfattat svar är att föredra. Svar som är längre än en sida text (skärmdumpar och programkod exkluderat) är onödigt långt.
-- Svaret skall ha minst en snutt programkod.
-- Svaret skall inkludera en kort övergripande förklarande text som redogör för vad respektive snutt programkod gör eller som svarar på annan teorifråga.
-- Svaret skall ha minst en skärmdump. Skärmdumpar skall illustrera exekvering av relevant programkod. Eventuell text i skärmdumpar måste vara läsbar.
-- I de fall detta efterfrågas, dela upp delar av ditt svar i för- och nackdelar. Dina för- respektive nackdelar skall vara i form av punktlistor med kortare stycken (3-4 meningar).
-
-Programkod ska se ut som exemplet nedan. Koden måste vara korrekt indenterad då den blir lättare att läsa vilket gör det lättare att hitta syntaktiska fel.
-
+Först gjode jag en textview med syftet att den ska vara en välkommst till appen
+Koden ser ut såhär:
 ```
-function errorCallback(error) {
-    switch(error.code) {
-        case error.PERMISSION_DENIED:
-            // Geolocation API stöds inte, gör något
-            break;
-        case error.POSITION_UNAVAILABLE:
-            // Misslyckat positionsanrop, gör något
-            break;
-        case error.UNKNOWN_ERROR:
-            // Okänt fel, gör något
-            break;
-    }
-}
-```
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Välkommen till JanneAppen!"
+        android:id="@+id/janne_label"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-Bilder läggs i samma mapp som markdown-filen.
+Detta ska vara pappan till allt och jag har ändrat vart dom andra widgetsen ska ligga från denna textview. Har inte ändrat så mycket förutom att jag gav den ett id
 
-![](android.png)
+Knappens ska ligga under textviewen och ska vara som en login knapp. såklart funkar den inte eftersom jag inte har nån onClick() i koden. För att den skulle ligga under textviewen gjorde jag såhär:
 
-Läs gärna:
+    <Button
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:text="Logga in"
+        android:id="@+id/signin"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/janne_label" />
 
-- Boulos, M.N.K., Warren, J., Gong, J. & Yue, P. (2010) Web GIS in practice VIII: HTML5 and the canvas element for interactive online mapping. International journal of health geographics 9, 14. Shin, Y. &
-- Wunsche, B.C. (2013) A smartphone-based golf simulation exercise game for supporting arthritis patients. 2013 28th International Conference of Image and Vision Computing New Zealand (IVCNZ), IEEE, pp. 459–464.
-- Wohlin, C., Runeson, P., Höst, M., Ohlsson, M.C., Regnell, B., Wesslén, A. (2012) Experimentation in Software Engineering, Berlin, Heidelberg: Springer Berlin Heidelberg.
+Längst ner kan man se att layout_constraintTop_toBottomOf har textviewens id. Då kommer den att lägga sig strax under textviewen
+
+Ungefär samma sak gjorde jag på editviewen också:
+<EditText
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="Vad har du gjort idag?"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/signin"
+    />
+
+Gav den en text som den ska börja med att skriva ut så att användaren ska förstå vad den ska skriva. Sen kan man se att id som jag gav till min knapp nu ligger längst ner här så att denna text lägger sig under knappen
+Jag skulle säga att man kan se detta som en hierarki
+
+
+
